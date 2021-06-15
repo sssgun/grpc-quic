@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	addr = "localhost:4242"
+	addr        = "localhost:4242"
 	defaultName = "world"
 )
 
