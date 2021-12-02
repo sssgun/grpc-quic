@@ -52,7 +52,10 @@ func generateTLSConfig(certFile, keyFile string) (*tls.Config, error) {
 			log.Printf("failed to tls.LoadX509KeyPair. %s", err.Error())
 			return nil, err
 		}
-		return &tls.Config{Certificates: []tls.Certificate{cert}}, nil
+		return &tls.Config{
+			Certificates: []tls.Certificate{cert},
+			NextProtos:   []string{"quic-echo-example"},
+		}, nil
 	} else {
 		log.Printf("generateTLSConfig] GenerateKey")
 		key, err := rsa.GenerateKey(rand.Reader, 1024)
